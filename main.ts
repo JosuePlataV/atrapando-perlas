@@ -70,7 +70,8 @@ let tiburon = sprites.create(img`
     ..............fffff.............
     `, SpriteKind.Enemy)
 tiburon.setPosition(20, 60)
-tiburon.follow(protagonista, 20)
+let velocidad = 20
+tiburon.follow(protagonista, velocidad)
 scene.setBackgroundColor(8)
 ostra = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -164,6 +165,10 @@ tiburon,
 200,
 true
 )
+game.onUpdateInterval(5000, function () {
+    velocidad += 1
+    tiburon.follow(protagonista, velocidad)
+})
 forever(function () {
     ostra.setImage(img`
         . . . . . f c c c c f . . . . . 
